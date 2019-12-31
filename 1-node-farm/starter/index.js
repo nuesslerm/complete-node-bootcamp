@@ -75,7 +75,7 @@ const server = http.createServer((req, res) => {
   // console.log(url.parse(req.url, true));
 
   const { query, pathname } = url.parse(req.url, true);
-  // const pathName = req.url;
+  // const pathname = req.url;
 
   // Overview page
   if (pathname === '/' || pathname === '/overview') {
@@ -91,7 +91,22 @@ const server = http.createServer((req, res) => {
 
     // Product page
   } else if (pathname === '/product') {
-    res.end('This is the PRODUCT');
+    // console.log(query.id);
+    if (dataObj[query.id] === undefined) {
+      res.writeHead(404, {
+        'Content-type': 'text/html'
+      });
+      res.end('<h1>Page not found!</h1>');
+    } else {
+      res.writeHead(200, {
+        'Content-type': 'text/html'
+      });
+      const product = dataObj[query.id];
+      const outputProduct = replaceTemplate(tempProduct, product);
+
+      // console.log(query);
+      res.end(outputProduct);
+    }
 
     // API
   } else if (pathname === '/api') {
