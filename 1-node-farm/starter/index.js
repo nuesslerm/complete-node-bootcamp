@@ -1,6 +1,8 @@
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
+// slugs are the last part of the URL that contains a unique string that identifies the resource that the website is displaying
+const slugify = require('slugify');
 
 // every file is treated as a separate module
 const replaceTemplate = require('./modules/replaceTemplate');
@@ -55,6 +57,13 @@ const tempProduct = fs.readFileSync(
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 const dataObj = JSON.parse(data);
+console.log(Array.isArray(dataObj));
+console.log(Array.isArray(dataObj[0]));
+
+// console.log(slugify('Fresh Avocados', { lower: true }));
+const slugs = dataObj.map(el => slugify(el.productName, { lower: true }));
+// console.log(Array.isArray(slugs));
+console.log(slugs);
 
 const server = http.createServer((req, res) => {
   // console.log(req.url);
@@ -88,7 +97,8 @@ const server = http.createServer((req, res) => {
         'Content-type': 'text/html'
       });
       const product = dataObj[query.id];
-      const outputProduct = replaceTemplate(tempProduct, product);
+      let outputProduct = replaceTemplate(tempProduct, product);
+      // outputProduct = outputProduct.replace(/{%ID%}/g, slugs[product.id]);
 
       // console.log(query);
       res.end(outputProduct);
