@@ -72,10 +72,13 @@ const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
   // console.log(req.url);
-  const pathName = req.url;
+  // console.log(url.parse(req.url, true));
+
+  const { query, pathname } = url.parse(req.url, true);
+  // const pathName = req.url;
 
   // Overview page
-  if (pathName === '/' || pathName === '/overview') {
+  if (pathname === '/' || pathname === '/overview') {
     res.writeHead(200, {
       'Content-type': 'text/html'
     });
@@ -87,11 +90,11 @@ const server = http.createServer((req, res) => {
     res.end(outputOverview);
 
     // Product page
-  } else if (pathName === '/product') {
+  } else if (pathname === '/product') {
     res.end('This is the PRODUCT');
 
     // API
-  } else if (pathName === '/api') {
+  } else if (pathname === '/api') {
     // Async handling of API <- inefficient; put at top; make synchronous to only have it execute once at the beginning of the script
 
     // fs.readFile(`${__dirname}/dev-data/data.json`, 'utf-8', (err, data) => {
