@@ -40,7 +40,6 @@ console.log('Will read file!');
 
 //////////////////////////////////
 // SERVER
-
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   'utf-8'
