@@ -1,0 +1,47 @@
+client = browser
+sends request to Server
+server sends response to client i.e. Website
+
+client-server-model
+
+https//www.google.com/maps
+protocol, domain name, resource
+
+1. client makes a request/dns lookup to servers real IP address
+DNS converts domain name to IP address of server
+port numer is to identfy a specific service running on a server, i.e. a subaddress =/ not the resource we try to access (not equivalent to calling the gmaps resource; will be done in HTTPS request later)
+
+2. once real IP address is found, a TCP/IP socket connection is established between client and server; kept alive during the entire time data is transferred between client and server
+
+TCP = Transmission Control protocol
+IP = Internet protocol
+communication protocols = internets fundamental control system
+
+3. HTTP request from client to server
+HTTP = hyper text transfer protocol
+
+request message: 
+GET /maps HTTP/1.1 > HTTP method + request target + HTTP version; GET, POST, PUT, PATCH
+Host: www.google.communication > request header
+User-Agent: Mozilla/5.0 > request header
+Accept-Language: en-User > request header
+
+<BODY> request body (only when sending data to server, e.g. POST)
+
+HTTP vs HTTPS; HTTPS is encrypted
+
+4. HTTP response
+
+response message:
+HTTP/1.1 200 OK > start line: HTTP version + status code + status message
+Data: Fri, 18 Jan 2021 > response header
+Content-Type: text/html > response header
+Transfer-Encoding: chunked > response header
+
+<BODY> resonse body (backend-developer specifies this); should contain URL and e.g. JSON data from server
+
+5. index.html is the first to be loaded > scanned for assets: JS, CSS, images > process is repeated for each file
+for each of the additional asset files the client will make an additional HTTP request to the server
+back-and-forth happens for every single file required by the Website
+finally the website is rendered in the client according to the JS, CSS, HTML specifications set by the server
+
