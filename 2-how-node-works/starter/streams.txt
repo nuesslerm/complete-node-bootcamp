@@ -1,0 +1,45 @@
+streams: 
+used to process (read and write) data piece by piece (chunks), without completing the whole read or write operation, and therefore without keeping all the data in memory.
+
+Streams are instances of the EventEmitter class
+
+> readable streams
+  Description:
+  streams from which we can read (consume) data
+  Example:
+  - http requests
+  - fs read streams
+  Important Events: 
+  - data
+  - end
+  Important Functions:
+  - pipe()
+  - read()
+
+> write streams
+  Description: 
+  Sreams to which we can write data
+  Example: 
+  - http responses
+  - fs write streams
+  Important Events:
+  - drain
+  - finish
+  Important Functions:
+  - write()
+  - end()
+
+> duplex streams
+  Description:
+  Streams that are both readable and writable
+  Example:
+  new web socket
+
+> transfrom streams
+  Description: 
+  Duplex streams that transform data as it is written or read
+  Example:
+  zlib Gzip creation
+
+important functions of readable, writable, duplex streams are consume streams; they are already provided by nodeJS
+
