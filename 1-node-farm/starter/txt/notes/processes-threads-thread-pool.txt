@@ -4,3 +4,20 @@ single thread (sequence of instructions)
 > box where code is executed in computers processor
 > easy to block node applications with other processes
 > runs in a single thread, no matter if 10 users or 10.000.000 users are accessing the node thread
+> be careful about not blocking the thread
+
+how nodeJS app works / sequence of instructions when starting a nodeJS app:
+initialise program > execute "top level" code > require modules > register event callbacks > start event loop
+
+some tasks are too heavy/expensive for node to execute because they would block the single thread
+
+libuv provides 3 more threads (up to 128)
+offload work from the event loop
+handle heavy ("expensive") tasks:
+  - file system APIs
+  - cryptography
+  - compression
+  - DNS lookup
+
+these tasks are offloaded to the thread pool so they don't block the event loop
+

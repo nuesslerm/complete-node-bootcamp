@@ -1,0 +1,35 @@
+event loop:
+all the application code that is inside callback functions (non-top-level-code)
+node.j is build around callback functions
+
+event-driven architecture:
+  - events are emitted
+  - event loop picks them up
+  - callbacks are called
+event loop does orchestration
+
+Callback queue/cycle:
+> start 
+> expired timer callbacks
+> I/O polling and callbacks
+> setImmediate callbacks
+> Close callbacks
+
+other callbacks that will execute right after any callback (above) in queue finished:
+> process.nexttick() queue
+> other microtasks queue (e.g. resolved promises)
+
+> check for any pending timers or I/O tasks
+  > NO > exit program
+  > YES > restart cycle from top (eg. listening for incoming HTTP requests will keep the program in the loop, ie. active I/O task)
+
+event-loop makes asynchronous code in nodeJS possible
+we need event-loop because in nodeJS everything works in one single thread
+
+very lightweight and resource-friendly but danger of blocking the event-loop when many users use the app at the same time
+
+Don't block!
+  don't use sync versions of functions in fs, crypto and zlib modules in your callback functions
+  don't perform complex calculations (eg. loops inside loops)
+  be careful with JSON in large objects
+  don't use too complex regular expressions (eg. nested quantifiers)

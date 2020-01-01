@@ -35,7 +35,7 @@ fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
     });
   });
 });
-console.log('Will read file!');
+console.log('Will have read file!');
 
 // err callback functions as arrow functions refer to their parent function with the this keyword whereas function () {} functions always generate their own this
 */
