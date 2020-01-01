@@ -1,0 +1,18 @@
+each javascript file is treated as a separate module;
+node.js uses the CommonJS module system: require(), exports or module.exports;
+ES module sytem is used in browsers: import/export;
+
+what happens when we require() a module
+> resolving & loading
+  > core modules: require("http");
+  > development modules: require("./lib/controllers");
+  > 3rd-party modules: require("express");
+  > path resolving: how node decides which module to load: 
+    1. start with core modules
+    2. if begins with "./" or "../" try to load development modules
+    3. if no file found try to find folder with index.js in it, ie. if require("./lib/controllers") doesn't indicate a controller.js file then node will look for the controllers folder with index.js file in it to execute the file instead
+    4. else go to node_modules/ and try to find module there
+> wrapping
+> execution
+> returning exports
+> caching
