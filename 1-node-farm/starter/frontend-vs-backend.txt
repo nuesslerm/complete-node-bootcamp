@@ -1,0 +1,22 @@
+browser vs web-server
+
+browser:
+front-end
+everything visible to the user
+HTML, CSS, JS > frontend stack
+
+web-server:
+back-end
+server is a computer that is connected to the internet; stores a websites files; runs HTTP server that is capable of understanding URLs, requests and also able to deliver responses; this HTTP software is the part that actually communicates with the browser requests
+
+static server vs dynamic server
+
+dynamic server also has an App running on it
+
+database is used to store stuff to fill up a website template; backend will communicate with the DATABASE
+
+web-server is also there to manipulate data in the database
+
+nodeJS is the web-server > backend stack
+mongoDB is the database > backend stack
+
