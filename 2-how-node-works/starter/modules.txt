@@ -10,9 +10,34 @@ what happens when we require() a module
   > path resolving: how node decides which module to load: 
     1. start with core modules
     2. if begins with "./" or "../" try to load development modules
-    3. if no file found try to find folder with index.js in it, ie. if require("./lib/controllers") doesn't indicate a controller.js file then node will look for the controllers folder with index.js file in it to execute the file instead
+    3. if no file found try to find folder with index.js in it, ie. if require("./lib/controllers") doesn't indicate a controller.js file then node will look for the controllers folder with index.js file in it to execute the file instead; if file cannot be found anywhere then error is thrown and execution is stopped
     4. else go to node_modules/ and try to find module there
+
 > wrapping
+  wraps it in an immediately invoked function expression (immediate function invocation, ifi): 
+
+  (function(exports, require, modules, __filename, __dirname){
+    // module code lives here
+  })
+
+  ifi wrapping enables module code to have a private scope
+  > require: function to require modules
+  > module: reference to the current module
+  > exports: reference to module.exports, used to export object from a module
+  > __filename: absolute path of the current module's file
+  > __dirname: directory name of the current module
+
 > execution
+  execution by nodeJS runtime
+
 > returning exports
+  require function returns exports of the required module
+  module.exports is the returned object (important)
+    > use module.exports to export one single variable, e.g. one class or one function (module.exports = Calculator)
+    > use exports to export multiple named variables 
+    (exports.add = (a,b) => a + b)
+    (exports.multiply = (a,b) => a * b)
+
 > caching
+  modules are cached after first load
+  module code is executed only once at the beginning and then retrieved from cache
