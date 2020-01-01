@@ -1,0 +1,37 @@
+static vs dynamic website
+
+static: 
+dev uploads final, ready files to the web-server
+no work done on the server, no app, just a static assortment of files displayed every time the user connects to the website
+
+dynamic/web application = dynamic website + functionality:
+are build on the server each time a new request comes in
+database > get data > build website with a template > html, css, JS > browser
+server-side rendering
+website can change based on data on site or user's actions
+
+pure dynamic website = wordpress blog which I can just read nothing more
+
+dynamic websites = server-side rendered
+
+API-powered website:
+API = Application Programming Interface; piece of software used by another piece of software
+
+database > get database > JSON > browser
+
+2 steps: build API, consuming API on client-side
+
+only data is sent to the client, not the ready-to-be-displayed website
+data is plugged in to a template using a frontend framework like react, angular, vue;
+
+API-powered websites moved focus from backend to frontend side of the application; moved from server to client
+
+API-powered websites = client-side rendered
+
+nodeJS perfect for building API
+
+1. build API
+2. build service-side rendered website
+
+API is best for applications that need to be scalable to native mobile apps, native mac and windows apps, etc.; service-side rendered websites have the disadvantage that they can only be consumed by web-browsers, nothing else
+
