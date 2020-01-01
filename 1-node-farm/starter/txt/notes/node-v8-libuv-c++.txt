@@ -1,0 +1,10 @@
+node dependencies:
+- v8 (in JS & C++)
+- libuv (in C++)
+  - event loop
+  - thread pool
+- node (libraries) are written in JS & C++
+- http-parser
+- c-ares (DNS requests)
+- OpenSSL (cryptography)
+- zlib (compression)

@@ -1,0 +1,6 @@
+node.js process (instance of a program in execution on a computer)
+
+single thread (sequence of instructions)
+> box where code is executed in computers processor
+> easy to block node applications with other processes
+> runs in a single thread, no matter if 10 users or 10.000.000 users are accessing the node thread
