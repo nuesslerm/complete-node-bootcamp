@@ -31,7 +31,6 @@ Accept-Language: en-User > request header
 HTTP vs HTTPS; HTTPS is encrypted
 
 4. HTTP response
-
 response message:
 HTTP/1.1 200 OK > start line: HTTP version + status code + status message
 Data: Fri, 18 Jan 2021 > response header
@@ -45,3 +44,6 @@ for each of the additional asset files the client will make an additional HTTP r
 back-and-forth happens for every single file required by the Website
 finally the website is rendered in the client according to the JS, CSS, HTML specifications set by the server
 
+TCP = job is to break up the requests and responses into 1000ths of small chunks, called packets, before they are sent; when these chunks arrive they will be reassembled into the original request/response, so the message arrives at the destination as fast as possible;
+
+IP = job is to send and route all of the packets through the internet; ensures that all the packets arrive at the intended destination using IP addresses on each packet
