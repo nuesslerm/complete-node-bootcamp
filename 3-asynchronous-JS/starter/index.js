@@ -22,6 +22,25 @@ const writeFilePro = function(file, data) {
   });
 };
 
+const getDogPic = async () => {
+  try {
+    const data = await readFilePro(`${__dirname}/dog.txt`);
+    console.log(`Breed: ${data}`);
+
+    const result = await superagent.get(
+      `https://dog.ceo/api/breed/${data}/images/random`
+    );
+    console.log(result.body.message);
+
+    await writeFilePro('dog-img.txt', result.body.message);
+    console.log('Random dog image saved to file!');
+  } catch (err) {
+    console.log(err);
+  }
+};
+getDogPic();
+
+/*
 // flat structure of chained promises
 readFilePro(`${__dirname}/dog.txt`, 'utf-8')
   .then(data => {
@@ -39,3 +58,4 @@ readFilePro(`${__dirname}/dog.txt`, 'utf-8')
   .catch(err => {
     console.log(err);
   });
+*/
