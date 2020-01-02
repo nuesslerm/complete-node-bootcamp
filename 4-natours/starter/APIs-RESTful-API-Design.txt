@@ -1,0 +1,51 @@
+Application Programming Interface: a piece of software that can be used by another piece of software, in order to allow applications to talk to each other
+
+app can mean many different things:
+  > node.js' fs or http APIs ("node APIs)
+  > browser's DOM JavaScript API
+  > with object-oriented programming, when exposing methods to the public, we're creating an API
+
+REST = REprensentational State Transfer
+
+1. separate API into logical resources:
+  resource: object of reprenseation of something, which has data associated to it;
+  any information that can be named ca be a resource. eg. tours, users, reviews
+
+2. expose structured, resource-based URLs:
+  structured URL ex: https://www.natours.com/addNewTour
+  NOT like!
+  Endpoint: /addNewTour, /updateTour, /deleteTour, /getTourByUser, /deleteTourByUser;
+  Endpoints should contain only resources (nouns) and use HTTP methods for actions; 
+  SHOULD:
+  Endpoint: /tours (Pl), /tours/id=7
+
+3. use HTTP methods (verbs, eg. get, post, put, patch, etc.)
+  POST: create, no ID is needed
+  GET: read a resource; ID is required
+  PUT: update; sends the entire updated object
+  PATCH: update; only sends the part of the object that is being updated
+  DELTE: delete a resource; ID is required
+  CRUD Operations: Create, Read, Update, Delete
+
+  You can combine API resources eg. like:
+  getToursByUser = ex: GET /users/3/tours
+  deleteToursByUser = ex: DELETE /users/3/tours/9
+
+4. send data as JSON
+  JSON is a lightweight data-interchange format;
+  JSON looks a bit like a JS object with key-value pairs;
+  keys have to be strings!;
+  values can be anything: bool, number, string, object, array;
+  ex. response formatting for JSON get request (JSend, JSONPN:API, OData JSON Protocol, etc.): 
+  JSend: 
+  {
+    "status": "success",
+    "data": {}
+  }
+  enveloping: wrapping data into an additional object is to mitigate security issues
+
+5. be STATELESS
+  all state is handled ON THE CLIENT; 
+  this means that each request must contain ALL the information necessary to process a certain request;
+    ex: loggedIn, currentPage
+  the server should not have to remember previous requests!
