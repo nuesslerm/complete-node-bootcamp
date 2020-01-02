@@ -6,6 +6,9 @@ fs.readFile(`${__dirname}/dog.txt`, 'utf-8', (err, data) => {
 
   superagent
     .get(`https://dog.ceo/api/breed/${data}/images/random`)
+    // .end(err, result) => {
+    //   if (err) return console.log(err.message);
+    // }
     .then(result => {
       console.log(result.body.message);
 
