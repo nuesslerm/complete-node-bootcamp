@@ -1,0 +1,11 @@
+express is a minimal node.js framework, a higher level of abstraction
+
+express contains a very robust set of features: 
+  > complex routing
+  > easier handling of requests and responses
+  > middleware
+  > server-side rendering
+
+express allows for rapid development of node.js applications: we don't have to reinvent the wheel
+
+express makes it easier to organise our application into the MVC pattern
