@@ -36,9 +36,42 @@ const getDogPic = async () => {
     console.log('Random dog image saved to file!');
   } catch (err) {
     console.log(err);
+    // stop promise from being successfully resolved by throwing an error
+    throw err;
   }
+  return '2: READY 🐶'; // promised return value of the async-await/promise-function
 };
-getDogPic();
+// async function automatically returns a promise; value that is returned from the async function will be the resolved promise > handle it as yet another promise, ie. use another async-await function to deal with the promise originating from the first async-await function
+
+(async () => {
+  try {
+    console.log('1: Will get dog pics');
+    const x = await getDogPic();
+    console.log(x);
+    console.log('3: Done getting dog pics');
+  } catch (err) {
+    console.log('ERROR 🤯');
+  }
+})();
+
+/*
+console.log('1: Will get dog pics');
+getDogPic()
+  .then(x => {
+    console.log(x);
+    console.log('3: Done getting dog pics');
+  })
+  .catch(err => console.log('ERROR 🤯'));
+// an async function returns a promise automatically
+// console.log(x);
+*/
+
+/*
+console.log('1: Will get dog pics');
+const x = getDogPic();
+console.log(x);
+console.log('3: Done getting dog pics');
+*/
 
 /*
 // flat structure of chained promises
