@@ -12,6 +12,9 @@ const tourController = require('../controllers/tourController');
 // ROUTES
 const router = express.Router();
 
+// Param Middleware
+router.param('id', tourController.checkID);
+
 // route: '/api/v1/tours'
 router
   .route('/')

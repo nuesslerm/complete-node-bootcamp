@@ -1,4 +1,4 @@
-// middleware and declarations related to EXPRESS live in app.js file
+// global middleware and declarations related to EXPRESS live in app.js file
 
 const express = require('express');
 const morgan = require('morgan');
