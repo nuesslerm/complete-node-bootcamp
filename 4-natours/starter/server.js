@@ -1,0 +1,9 @@
+// database configurations, server error handling, environment variables live in server.js file
+
+const app = require('./app');
+
+// START SERVER
+const port = 3000;
+app.listen(port, () => {
+  console.log(`App running on port ${3000}...`);
+});
