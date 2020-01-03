@@ -3,20 +3,8 @@ const express = require('express');
 
 const app = express();
 
-// built-in express middleware
+// middleware
 app.use(express.json());
-// custom middleware function
-app.use((req, res, next) => {
-  console.log('Hello from the middleware 👋');
-  // never forget to use next() in middleware
-  next();
-});
-
-app.use((req, res, next) => {
-  // example: we have a route handler that needs to know when the request happens
-  req.requestTime = new Date().toISOString();
-  next();
-});
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
@@ -24,10 +12,8 @@ const tours = JSON.parse(
 
 // separated handler function of the route
 const getAllTours = (req, res) => {
-  console.log(req.requestTime);
   res.status(200).json({
     status: 'success',
-    requestedAt: req.requestTime,
     results: tours.length,
     data: {
       tours
@@ -58,7 +44,6 @@ const getTour = (req, res) => {
 
 const createTour = (req, res) => {
   const newId = tours[tours.length - 1].id + 1;
-  // without middleware app.use(express.json()); we couldn't use the req.body in JS format
   const newTour = Object.assign({ id: newId }, req.body);
 
   tours.push(newTour);
@@ -122,7 +107,6 @@ const deleteTour = (req, res) => {
 // app.delete('/api/v1/tour/:id', deleteTour);
 
 // specified the actions for both routes
-// route handle (middleware)
 // route: '/api/v1/tours'
 app
   .route('/api/v1/tours')
