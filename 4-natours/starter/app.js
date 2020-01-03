@@ -9,11 +9,6 @@ app.use(express.json());
 
 app.use(morgan('dev'));
 
-// app.use((req, res, next) => {
-//   console.log('Hello from the middleware 👋');
-//   next();
-// });
-
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
@@ -23,7 +18,7 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
 
-// 2. ROUTE HANDLERS/CONTROLLERS (special middleware)
+// 2. ROUTE HANDLERS/CONTROLLERS
 const getAllTours = (req, res) => {
   console.log(req.requestTime);
   res.status(200).json({
@@ -117,7 +112,6 @@ const getAllUsers = (req, res) => {
 };
 
 const getUser = (req, res) => {
-  // 500 = internal server error
   res.status(500).json({
     status: 'error',
     message: 'this route not yet defined'
@@ -125,7 +119,6 @@ const getUser = (req, res) => {
 };
 
 const createUser = (req, res) => {
-  // 500 = internal server error
   res.status(500).json({
     status: 'error',
     message: 'this route not yet defined'
@@ -133,7 +126,6 @@ const createUser = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-  // 500 = internal server error
   res.status(500).json({
     status: 'error',
     message: 'this route not yet defined'
@@ -141,14 +133,13 @@ const updateUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-  // 500 = internal server error
   res.status(500).json({
     status: 'error',
     message: 'this route not yet defined'
   });
 };
 
-// 3. ROUTES (special middleware)
+// 3. ROUTES
 const tourRouter = express.Router();
 const userRouter = express.Router();
 
