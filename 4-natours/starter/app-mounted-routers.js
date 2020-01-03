@@ -149,10 +149,12 @@ const deleteUser = (req, res) => {
 };
 
 // 3. ROUTES (special middleware)
-const tourRouter = express.Router();
+// modular tour router will be used as middleware
+const tourRouter = express.Router(); // created sub-application
 const userRouter = express.Router();
 
-app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/tours', tourRouter); // mounting the router
+// tourRouter middleware only runs on '/api/v1/tours', so we have to specify relative paths from there
 app.use('/api/v1/users', userRouter);
 
 // route: '/api/v1/tours'
