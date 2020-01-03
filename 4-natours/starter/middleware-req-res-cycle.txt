@@ -1,0 +1,13 @@
+incoming request with.. ---> response
+  req object
+  res object
+
+everything is middleware (even routers, ie. usually last executed middleware)
+
+// middleware (stack); order as defined in the code
+> parsing body; next()
+> logging; next()
+> setting headers; next()
+> router; res.send()
+
+linear process
