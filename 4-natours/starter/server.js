@@ -1,4 +1,5 @@
 // database configurations, server error handling, environment variables live in server.js file
+// server.js is the entry point/starting point for the API
 
 const app = require('./app');
 
