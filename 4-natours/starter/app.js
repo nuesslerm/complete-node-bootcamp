@@ -11,6 +11,8 @@ const userRouter = require('./routes/userRoutes');
 
 // 2. MIDDLEWARE (initiated with app.use())
 app.use(express.json());
+// middleware for getting static files from the public folder
+app.use(express.static(`${__dirname}/public`));
 
 app.use(morgan('dev'));
 
