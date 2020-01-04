@@ -4,12 +4,12 @@ const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
 
-// MIDDLEWARE
 // callback function for param middleware
 exports.checkID = (req, res, next, val) => {
   console.log(`Tour id is: ${val}`);
 
   if (req.params.id * 1 > tours.length) {
+    // return statement will break the response cycle, otherwise error: can't send more headers after response was already sent
     return res.status(404).json({
       status: 'fail',
       message: 'Invalid id'
@@ -20,6 +20,16 @@ exports.checkID = (req, res, next, val) => {
 
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
+    /*
+    if (!req.body.name && req.body.price) {
+      message = 'please add name';
+    } else if (req.body.name && !req.body.price) {
+      message = 'please add price';
+    } else if (!req.body.name && !req.body.price) {
+      message = 'please add name and price';
+    }
+    */
+
     return res.status(400).json({
       status: 'fail',
       message: 'Missing name or price'
