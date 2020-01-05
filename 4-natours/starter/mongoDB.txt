@@ -1,0 +1,24 @@
+NoSQL database
+
+> mongoDB can contain 1 or more collections ("tables") 
+> each collection can contain 1 or more documents ("rows")
+
+Documents: blogpost, user, review
+blog collection -> blogposts
+users collection -> user
+reviews collection -> review
+
+Document has a data format similar to JSON
+
+key features: 
+> document based: MongoDB stores data in documents (field-value pair data structures, NoSQL)
+> scalable: very easy to distribute data across multiple machines as your users and amount of data grows
+> flexible: no document data schema required, so each document can have different number and type of fields
+> performant: embedded data models, indexing, sharding, flexible documents, native duplication, etc.
+> free, open-source, published under SSPL license
+
+Document structure: 
+> BSON: Data format MongoDB uses for data storage. Like JSON, but typed. so MongoDB documents are typed
+> embedding/denormalizing: including related data into a single document. this allows for quicker access and easier data models (it's not always the best solution though)
+
+in relational databases, data is always normalised, ie. tables are joined, ie. data elements from another table is referenced by ID, eg. comments_id for a blogpost row in blogs table
