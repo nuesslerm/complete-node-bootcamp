@@ -14,7 +14,11 @@ app.use(express.json());
 // middleware for getting static files from the public folder
 app.use(express.static(`${__dirname}/public`));
 
-app.use(morgan('dev'));
+// for debugging:
+// console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
